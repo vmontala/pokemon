@@ -1,0 +1,28 @@
+.select {
+  display: inline-flex;
+  border: 5px outset var(--color-generic-black);
+  padding: var(--s-sm) var(--s-md);
+  background: var(--color-tertiary);
+  position: relative;
+  gap: var(--s-sm);
+
+  &::after {
+    content: '>';
+    transform: rotate(90deg);
+    display: block;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-within {
+    background-color: var(--color-tertiary-light);
+    outline: none;
+  }
+
+  .select__field {
+    position: absolute;
+    opacity: 0;
+    inset: -5px;
+    cursor: pointer;
+  }
+}

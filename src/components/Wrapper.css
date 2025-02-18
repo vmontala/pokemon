@@ -1,0 +1,15 @@
+.wrapper {
+  padding: var(--s-lg);
+  background-color: var(--color-primary);
+  border: 5px outset var(--color-generic-black);
+  display: grid;
+  grid-auto-flow: rows;
+  gap: var(--s-lg);
+  color: var(--color-generic-white);
+
+  .wrapper__body {
+    background-color: var(--color-generic-white);
+    border: 5px inset var(--color-generic-black);
+    color: initial;
+  }
+}

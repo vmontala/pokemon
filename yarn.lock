@@ -356,6 +356,11 @@
     "@eslint/core" "^0.10.0"
     levn "^0.4.1"
 
+"@fontsource/pixelify-sans@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/pixelify-sans/-/pixelify-sans-5.1.1.tgz#54c9e67ecf47b70ff44c69ed274d9cf94ace1e12"
+  integrity sha512-YXmfjdZcRYGLTJh3WcyP6BZZGuh2PlooTXgODCcybBuTiqDKKPxPQBTfHBT61tEpjS+nHqTf68N7TmkWamkPcQ==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"

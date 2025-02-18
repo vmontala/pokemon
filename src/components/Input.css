@@ -1,0 +1,16 @@
+.input {
+  border: 5px outset var(--color-generic-black);
+  padding: var(--s-sm) var(--s-md);
+  background: var(--color-generic-gray-light);
+  height: 5rem;
+
+  &:hover,
+  &:focus-within {
+    background-color: var(--color-generic-white);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--color-generic-black);
+  }
+}

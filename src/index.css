@@ -6,19 +6,57 @@
   --s-md: 1.5rem;
   --s-lg: 2rem;
   --s-xl: 4rem;
+
+  --color-primary: #DC0A2D;
+  --color-secondary: #29AAFD;
+  --color-secondary-light: #8ed2fe;
+  --color-secondary-regular: var(--color-secondary);
+  --color-secondary-dark: #0274be;
+  --color-tertiary: #51AD60;
+  --color-tertiary-light: #96ce9f;
+  --color-tertiary-regular: var(--color-tertiary);
+  --color-tertiary-dark: #306839;
+  --color-generic-white: #ffffff;
+  --color-generic-black: #242424;
+  --color-generic-gray: #DEDEDE;
+  --color-generic-gray-light: #eeeeee;
+  --color-generic-gray-regular: var(--color-generic-gray);
+  --color-generic-gray-dark: #ababab;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--color-generic-gray-regular);
+  color: var(--color-generic-black);
 }
 
 body {
-  font-size: 1.6rem;
+  font-family: 'Pixelify Sans', ui-monospace, monospace;
+  font-size: 2rem;
 }
 
 body,
 #root {
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 
 #root {
   display: flex;
   justify-content: center;
+}
+
+a,
+button,
+input {
+  color: var(--color-generic-black);
+  font: inherit;
+  line-height: inherit;
+}
+
+a {
+  text-decoration: none;
 }

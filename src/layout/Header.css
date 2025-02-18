@@ -1,5 +1,10 @@
-.layout {
-  width: 100%;
-  max-width: 140rem;
-  padding: var(--s-xl);
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .header__logo {
+    max-width: 50rem;
+    width: 100%;
+  }
 }

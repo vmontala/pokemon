@@ -2,4 +2,7 @@
   width: 100%;
   max-width: 140rem;
   padding: var(--s-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-xl);
 }
