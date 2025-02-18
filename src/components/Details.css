@@ -1,0 +1,9 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-xs);
+
+  .details__key {
+    color: var(--color-generic-gray-dark);
+  }
+}

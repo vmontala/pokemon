@@ -1,0 +1,19 @@
+{
+  "abilities": "limber and imposter",
+  "height": 3,
+  "id": 132,
+  "moves": "transform",
+  "name": "ditto",
+  "species": "ditto",
+  "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+  "stats": {
+    "hp": 48,
+    "attack": 48,
+    "defense": 48,
+    "special-attack": 48,
+    "special-defense": 48,
+    "speed": 48
+  },
+  "types": "normal",
+  "weight": 40
+}
