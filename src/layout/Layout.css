@@ -1,0 +1,5 @@
+.layout {
+  width: 100%;
+  max-width: 140rem;
+  padding: var(--s-xl);
+}
