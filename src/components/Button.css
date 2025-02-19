@@ -4,6 +4,7 @@
   padding: var(--s-sm) var(--s-md);
   background: var(--color-secondary);
   cursor: pointer;
+  flex-grow: 1;
 
   &:hover,
   &:focus-visible {
@@ -20,5 +21,11 @@
     background-color: var(--color-generic-gray-dark);
     border-style: inset;
     cursor: not-allowed;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .button {
+    flex-grow: 0;
   }
 }

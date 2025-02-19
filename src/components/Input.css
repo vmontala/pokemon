@@ -3,6 +3,7 @@
   padding: var(--s-sm) var(--s-md);
   background: var(--color-generic-gray-light);
   height: 5rem;
+  width: 100%;
 
   &:hover,
   &:focus-within {
@@ -18,5 +19,11 @@
     background-color: var(--color-generic-gray-dark);
     border-style: inset;
     cursor: not-allowed;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .input {
+    width: auto;
   }
 }

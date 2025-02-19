@@ -2,7 +2,8 @@
   .list__header,
   .list__footer {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: var(--s-sm);
 
     .list__filter,
     .list__limit,
@@ -14,7 +15,7 @@
   }
 
   .list__header {
-    gap: var(--s-lg);
+    flex-grow: 1;
   }
 
   .list__empty {
@@ -27,5 +28,27 @@
 
   .list__footer {
     justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .list {
+    .list__header,
+    .list__footer {
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .list__header {
+      gap: var(--s-md);
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .list {
+    .list__header {
+      gap: var(--s-lg);
+    }
   }
 }

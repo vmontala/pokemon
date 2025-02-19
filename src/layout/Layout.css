@@ -1,8 +1,21 @@
 .layout {
   width: 100%;
-  max-width: 140rem;
-  padding: var(--s-xl);
+  padding: var(--s-md);
   display: flex;
   flex-direction: column;
   gap: var(--s-xl);
+}
+
+@media screen and (min-width: 700px) {
+  .layout {
+    max-width: 100rem;
+    padding: var(--s-lg);
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .layout {
+    max-width: 140rem;
+    padding: var(--s-xl);
+  }
 }

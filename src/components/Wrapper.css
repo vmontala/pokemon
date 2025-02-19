@@ -1,15 +1,37 @@
 .wrapper {
-  padding: var(--s-lg);
+  padding: var(--s-sm);
   background-color: var(--color-primary);
   border: 5px outset var(--color-generic-black);
   display: grid;
   grid-auto-flow: rows;
-  gap: var(--s-lg);
+  gap: var(--s-sm);
   color: var(--color-generic-white);
+
+  .wrapper__header {
+    display: flex;
+  }
 
   .wrapper__body {
     background-color: var(--color-generic-white);
     border: 5px inset var(--color-generic-black);
-    color: initial;
+    color: var(--color-generic-black);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    padding: var(--s-md);
+    gap: var(--s-md);
+
+    .wrapper__header {
+      display: initial;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .wrapper {
+    padding: var(--s-lg);
+    gap: var(--s-lg);
   }
 }

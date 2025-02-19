@@ -5,6 +5,8 @@
   background: var(--color-tertiary);
   position: relative;
   gap: var(--s-sm);
+  flex-grow: 1;
+  justify-content: space-around;
 
   &::after {
     content: '>';
@@ -34,5 +36,11 @@
     &[disabled] {
       cursor: not-allowed;
     }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .select {
+    flex-grow: 0;
   }
 }
