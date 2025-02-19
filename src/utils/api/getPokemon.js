@@ -68,6 +68,7 @@ const getPokemon = (id) => {
     }
   `)
 
+  response.catch(() => window.alert('Error loading the Pokémon'))
 
   return response.then(({ data }) => {
     const pokemon = data.pokemon_v2_pokemon.map(formatPokemon)[0]

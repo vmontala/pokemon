@@ -9,5 +9,15 @@ export default function request (query) {
       },
       body: JSON.stringify({ query }),
     },
-  ).then((response) => response.json())
+  )
+    .then((response) => response.json())
+    .then((data) => new Promise((resolve, reject) => {
+      if (data.errors?.length) {
+        reject(data)
+
+        return
+      }
+
+      resolve(data)
+    }))
 }

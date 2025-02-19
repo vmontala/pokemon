@@ -19,6 +19,8 @@ const getTypes = () => {
     }
   `)
 
+  response.catch(() => window.alert('Error loading the Pokémon types'))
+
   return response.then(({ data }) => {
     const types = data.pokemon_v2_type.map(formatType).sort((a, b) => a.localeCompare(b))
 

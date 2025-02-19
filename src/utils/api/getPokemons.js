@@ -21,7 +21,7 @@ const formatPokemon = (pokemon) => {
     name: capitalise(pokemon.name),
     image,
     types,
-    searchable: [pokemon.name, types.label].map((item) => item.toLowerCase()),
+    searchable: [`${pokemon.id}`, pokemon.name, types.label].map((item) => item.toLowerCase()),
   }
 }
 
@@ -48,6 +48,8 @@ const getPokemons = () => {
       }
     }
   `)
+
+  response.catch(() => window.alert('Error loading the Pokémons'))
 
   return response.then(({ data }) => {
     const pokemons = data.pokemon_v2_pokemon.map(formatPokemon)

@@ -19,6 +19,7 @@ export default function Detail () {
   useEffect(() => {
     getPokemon(id)
       .then(setPokemon)
+      .catch(() => navigate('/'))
   }, [id, navigate])
 
   const details = useMemo(
