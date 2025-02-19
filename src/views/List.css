@@ -8,8 +8,8 @@
     .list__filter,
     .list__limit,
     .list__pagination {
-      display: flex;
       align-items: center;
+      display: flex;
       gap: var(--s-sm);
     }
   }
@@ -19,11 +19,11 @@
   }
 
   .list__empty {
-    display: flex;
     align-items: center;
+    color: var(--color-generic-gray-dark);
+    display: flex;
     justify-content: center;
     padding: var(--s-xl);
-    color: var(--color-generic-gray-dark);
   }
 
   .list__footer {

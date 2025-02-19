@@ -1,10 +1,10 @@
 .button {
-  display: inline-block;
-  border: 5px outset var(--color-generic-black);
-  padding: var(--s-sm) var(--s-md);
   background: var(--color-secondary);
+  border: 5px outset var(--color-generic-black);
   cursor: pointer;
+  display: inline-block;
   flex-grow: 1;
+  padding: var(--s-sm) var(--s-md);
 
   &:hover,
   &:focus-visible {

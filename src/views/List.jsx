@@ -5,10 +5,10 @@ import getTypes from '@/utils/api/getTypes.js'
 
 import Button from '@/components/Button.jsx'
 import Input from '@/components/Input.jsx'
-import Select from '@/components/Select.jsx'
-import Wrapper from '@/components/Wrapper.jsx'
-import Table from '@/components/Table.jsx'
 import Loader from '@/components/Loader.jsx'
+import Select from '@/components/Select.jsx'
+import Table from '@/components/Table.jsx'
+import Wrapper from '@/components/Wrapper.jsx'
 
 import usePagination from './usePagination.js'
 import './List.css'

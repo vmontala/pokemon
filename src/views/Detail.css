@@ -1,26 +1,26 @@
 .detail {
-  padding: var(--s-sm);
   display: grid;
+  padding: var(--s-sm);
+  gap: var(--s-lg);
   grid-template-areas:
     'image'
     'header'
     'details'
     'stats';
   grid-template-rows: min-content auto;
-  gap: var(--s-lg);
 
   .detail__image {
-    grid-area: image;
-    width: 100%;
     aspect-ratio: 1;
+    grid-area: image;
     image-rendering: pixelated;
+    width: 100%;
   }
 
   .detail__header {
-    grid-area: header;
     display: flex;
-    gap: var(--s-xs);
     flex-direction: column-reverse;
+    gap: var(--s-xs);
+    grid-area: header;
   }
 
   .detail__id {
@@ -53,12 +53,12 @@
 
 @media screen and (min-width: 700px) {
   .detail {
-    padding: var(--s-md);
     grid-template-areas:
       'image header'
       'image details'
       'image stats';
     grid-template-columns: min-content auto;
+    padding: var(--s-md);
 
     .detail__image {
       width: 19.2rem;

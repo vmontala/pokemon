@@ -1,8 +1,8 @@
 .input {
-  border: 5px outset var(--color-generic-black);
-  padding: var(--s-sm) var(--s-md);
   background: var(--color-generic-gray-light);
+  border: 5px outset var(--color-generic-black);
   height: 5rem;
+  padding: var(--s-sm) var(--s-md);
   width: 100%;
 
   &:hover,

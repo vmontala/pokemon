@@ -1,9 +1,9 @@
 .layout {
-  width: 100%;
-  padding: var(--s-md);
   display: flex;
   flex-direction: column;
   gap: var(--s-xl);
+  padding: var(--s-md);
+  width: 100%;
 }
 
 @media screen and (min-width: 700px) {

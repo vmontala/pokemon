@@ -1,18 +1,18 @@
 .select {
-  display: inline-flex;
-  border: 5px outset var(--color-generic-black);
-  padding: var(--s-sm) var(--s-md);
   background: var(--color-tertiary);
-  position: relative;
-  gap: var(--s-sm);
+  border: 5px outset var(--color-generic-black);
+  display: inline-flex;
   flex-grow: 1;
+  gap: var(--s-sm);
   justify-content: space-around;
+  padding: var(--s-sm) var(--s-md);
+  position: relative;
 
   &::after {
     content: '>';
-    transform: rotate(90deg);
     display: block;
     pointer-events: none;
+    transform: rotate(90deg);
   }
 
   &:hover,
@@ -28,10 +28,10 @@
   }
 
   .select__field {
-    position: absolute;
-    opacity: 0;
-    inset: -5px;
     cursor: pointer;
+    inset: -5px;
+    opacity: 0;
+    position: absolute;
 
     &[disabled] {
       cursor: not-allowed;

@@ -5,8 +5,8 @@ import getPokemon from '@/utils/api/getPokemon.js'
 
 import Button from '@/components/Button.jsx'
 import Details from '@/components/Details.jsx'
-import Wrapper from '@/components/Wrapper.jsx'
 import Loader from '@/components/Loader.jsx'
+import Wrapper from '@/components/Wrapper.jsx'
 
 import './Detail.css'
 

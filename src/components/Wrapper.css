@@ -1,11 +1,11 @@
 .wrapper {
-  padding: var(--s-sm);
   background-color: var(--color-primary);
   border: 5px outset var(--color-generic-black);
-  display: grid;
-  grid-auto-flow: rows;
-  gap: var(--s-sm);
   color: var(--color-generic-white);
+  display: grid;
+  gap: var(--s-sm);
+  grid-auto-flow: rows;
+  padding: var(--s-sm);
 
   .wrapper__header {
     display: flex;
@@ -20,8 +20,8 @@
 
 @media screen and (min-width: 700px) {
   .wrapper {
-    padding: var(--s-md);
     gap: var(--s-md);
+    padding: var(--s-md);
 
     .wrapper__header {
       display: initial;
@@ -31,7 +31,7 @@
 
 @media screen and (min-width: 1400px) {
   .wrapper {
-    padding: var(--s-lg);
     gap: var(--s-lg);
+    padding: var(--s-lg);
   }
 }
