@@ -1,18 +1,14 @@
 import capitalise from '@/utils/string/capitalise.js'
+import conjunction from '@/utils/array/conjunction.js'
 
 import request from './request'
-
-const listFormatter = new Intl.ListFormat('en', {
-  style: 'long',
-  type: 'conjunction',
-})
 
 const formatTypes = (types) => {
   const list = types.map(({ pokemon_v2_type }) => pokemon_v2_type.name)
 
   return {
     list,
-    label: capitalise(listFormatter.format(list)),
+    label: capitalise(conjunction(list)),
   }
 }
 

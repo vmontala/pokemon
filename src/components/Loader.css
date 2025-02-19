@@ -1,0 +1,24 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: flex;
+  gap: var(--s-md);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--s-xl);
+
+  .loader__image {
+    width: 6rem;
+    animation: spin 0.5s ease-in-out infinite;
+  }
+
+  .loader__text {
+    font-size: 3rem;
+  }
+}

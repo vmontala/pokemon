@@ -1,6 +1,6 @@
 .detail {
-  padding: var(--s-lg);
   display: grid;
+  padding: var(--s-lg);
   grid-template-areas:
     'image header'
     'image details'
@@ -11,7 +11,7 @@
 
   .detail__image {
     grid-area: image;
-    width: 19.2rem;
+    width: 38.4rem;
     aspect-ratio: 1;
     image-rendering: pixelated;
   }
