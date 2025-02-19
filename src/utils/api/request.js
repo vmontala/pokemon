@@ -12,6 +12,7 @@ export default function request (query) {
   )
     .then((response) => response.json())
     .then((data) => new Promise((resolve, reject) => {
+      // Enforces a failed request as the `graphQL` implementation always returns a `200 OK`
       if (data.errors?.length) {
         reject(data)
 

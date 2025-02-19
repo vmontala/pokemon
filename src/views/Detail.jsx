@@ -22,6 +22,7 @@ export default function Detail () {
       .catch(() => navigate('/'))
   }, [id, navigate])
 
+  // key-value object used to represent the data on the UI
   const details = useMemo(
     () => ({
       Height: pokemon.height,

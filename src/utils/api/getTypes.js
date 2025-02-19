@@ -24,6 +24,7 @@ const getTypes = () => {
   return response.then(({ data }) => {
     const types = data.pokemon_v2_type.map(formatType).sort((a, b) => a.localeCompare(b))
 
+    // Caches the formatted data so an extra request can be avoidad
     window.sessionStorage.setItem('types', JSON.stringify(types))
 
     return types

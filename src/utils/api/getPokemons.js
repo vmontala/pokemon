@@ -3,6 +3,8 @@ import conjunction from '@/utils/array/conjunction.js'
 
 import request from './request'
 
+// Formats the (nested) list of types to an object containing the flat list (for filtering) and a
+// string (for representation and searching)
 const formatTypes = (types) => {
   const list = types.map(({ pokemon_v2_type }) => pokemon_v2_type.name)
 
@@ -12,6 +14,7 @@ const formatTypes = (types) => {
   }
 }
 
+// Formats the pokémon data as needed for the view upon retrievel from the API
 const formatPokemon = (pokemon) => {
   const types = formatTypes(pokemon.pokemon_v2_pokemontypes)
   const image = pokemon.pokemon_v2_pokemonsprites[0].sprites.front_default
@@ -54,6 +57,7 @@ const getPokemons = () => {
   return response.then(({ data }) => {
     const pokemons = data.pokemon_v2_pokemon.map(formatPokemon)
 
+    // Caches the formatted data so an extra request can be avoidad
     window.sessionStorage.setItem('pokemons', JSON.stringify(pokemons))
 
     return pokemons

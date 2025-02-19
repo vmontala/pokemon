@@ -3,23 +3,27 @@ import conjunction from '@/utils/array/conjunction.js'
 
 import request from './request'
 
+// Formats the (nested) list of types to a string
 const formatTypes = (types) => {
   const list = types.map(({ pokemon_v2_type }) => pokemon_v2_type.name)
 
   return capitalise(conjunction(list))
 }
 
+// Formats the (nested) list of abilities to a string
 const formatAbilities = (abilities) => {
   const list = abilities.map(({ pokemon_v2_ability }) => pokemon_v2_ability.name)
 
   return capitalise(conjunction(list))
 }
 
+// Converts the (nested) list of stats to a map
 const formatStats = (stats) => stats.reduce((map, stat) => ({
   ...map,
   [stat.pokemon_v2_stat.name]: stat.base_stat,
 }), {})
 
+// Formats the pokémon data as needed for the view upon retrievel from the API
 const formatPokemon = (pokemon) => ({
   id: pokemon.id,
   name: capitalise(pokemon.name),
@@ -73,6 +77,7 @@ const getPokemon = (id) => {
   return response.then(({ data }) => {
     const pokemon = data.pokemon_v2_pokemon.map(formatPokemon)[0]
 
+    // Caches the formatted data so an extra request can be avoidad
     window.sessionStorage.setItem(`pokemon-${id}`, JSON.stringify(pokemon))
 
     return pokemon

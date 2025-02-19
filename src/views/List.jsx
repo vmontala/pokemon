@@ -33,6 +33,7 @@ export default function List () {
     () => {
       const { search, type } = filters
 
+      // Filters the pokémons based on the formatted `searchable` property or the list of types
       return pokemons.filter((row) => (
         (!search || row.searchable.some((value) => value.includes(search.toLowerCase())))
         && (type === 'all' || row.types.list.includes(type.toLowerCase()))

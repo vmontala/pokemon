@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 
 import './Table.css'
 
+// Despite beind called `Table`, this component only mimicks the UI of a table
 export default function Table ({ rows }) {
   return (
     <div className="table">

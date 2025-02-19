@@ -20,17 +20,7 @@ export default function usePagination (data) {
     reset()
   }
 
-  const from = useMemo(
-    () => {
-      if (limit < 0) {
-        return 1
-      }
-
-      return page * limit + 1
-    },
-    [page, limit],
-  )
-
+  // Amount of items up to which are shown (i.e. `20` given page `2` and limit `10`)
   const to = useMemo(
     () => {
       const total = data.length
@@ -46,6 +36,23 @@ export default function usePagination (data) {
     [page, limit, data],
   )
 
+  // Amount of items from to which are shown (i.e. `11` given page `2` and limit `10`)
+  const from = useMemo(
+    () => {
+      if (!to) {
+        return to
+      }
+
+      if (limit < 0) {
+        return 1
+      }
+
+      return page * limit + 1
+    },
+    [page, limit, to],
+  )
+
+  // Portion of data visible on the UI
   const visibleData = useMemo(
     () => limit < 0 ? data : data.slice(page * limit, page * limit + limit),
     [data, page, limit],
