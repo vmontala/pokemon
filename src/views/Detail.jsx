@@ -4,7 +4,7 @@ import Wrapper from '@/components/Wrapper.jsx'
 
 import './Detail.css'
 
-import pokemon from './detail.json';
+import pokemon from './detail.json'
 
 export default function Detail () {
   const details = {
@@ -14,13 +14,13 @@ export default function Detail () {
     species: pokemon.species,
     types: pokemon.types,
     weight: pokemon.weight,
-  };
+  }
 
   const Header = (
     <Button to="/">
       Back
     </Button>
-  );
+  )
 
   return (
     <Wrapper header={Header}>

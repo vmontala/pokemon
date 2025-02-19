@@ -1,6 +1,4 @@
-import { useMemo } from 'react'
-
-import './Input.css';
+import './Input.css'
 
 export default function Input ({ value, onChange, className, ...props }) {
   return (
@@ -11,5 +9,5 @@ export default function Input ({ value, onChange, className, ...props }) {
       className={`input ${className || ''}`}
       {...props}
     />
-  );
+  )
 }

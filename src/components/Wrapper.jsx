@@ -1,4 +1,4 @@
-import './Wrapper.css';
+import './Wrapper.css'
 
 export default function Wrapper ({ header, children, footer, className }) {
   return (
@@ -17,5 +17,5 @@ export default function Wrapper ({ header, children, footer, className }) {
         </footer>
       )}
     </section>
-  );
+  )
 }

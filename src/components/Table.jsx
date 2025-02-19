@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 
 import './Table.css'
 
@@ -13,7 +13,12 @@ export default function Table ({ rows }) {
         >
           <div className="table__cell">
             <img className="table__image" src={row.image} />
-            {row.name} ({row.id})
+          </div>
+          <div className="table__cell">
+            {row.name}
+            <span className="table__id">
+              #{row.id}
+            </span>
           </div>
           <div className="table__cell">
             {row.types.label}
@@ -21,5 +26,5 @@ export default function Table ({ rows }) {
         </Link>
       ))}
     </div>
-  );
+  )
 }

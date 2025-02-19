@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import './Select.css';
+import './Select.css'
 
 export default function Select ({ options, value, onChange }) {
   const selectedOption = useMemo(
     () => options.find((option) => option?.value === value || option === value),
     [options, value]
-  );
+  )
 
   return (
     <div className="select">
@@ -22,5 +22,5 @@ export default function Select ({ options, value, onChange }) {
       </select>
       {selectedOption?.label || selectedOption}
     </div>
-  );
+  )
 }

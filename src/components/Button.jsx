@@ -1,6 +1,6 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 
-import './Button.css';
+import './Button.css'
 
 export default function Button ({ children, to, ...props }) {
   return (
@@ -13,5 +13,5 @@ export default function Button ({ children, to, ...props }) {
         {children}
       </button>
     )
-  );
+  )
 }

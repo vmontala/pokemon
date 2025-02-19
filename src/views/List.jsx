@@ -1,5 +1,7 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router';
+import { useState, useMemo, useEffect } from 'react'
+
+import getPokemons from '@/utils/api/getPokemons.js'
+import getTypes from '@/utils/api/getTypes.js'
 
 import Button from '@/components/Button.jsx'
 import Input from '@/components/Input.jsx'
@@ -7,72 +9,50 @@ import Select from '@/components/Select.jsx'
 import Wrapper from '@/components/Wrapper.jsx'
 import Table from '@/components/Table.jsx'
 
+import usePagination from './usePagination.js'
 import './List.css'
 
-import rows from './list.json';
+export default function List () {
+  const [pokemons, setPokemons] = useState([])
+  const [types, setTypes] = useState([])
 
-const paginationOptions = [
-  10,
-  100,
-  { label: 'All', value: -1 },
-];
+  useEffect(() => {
+    getPokemons().then((data) => setPokemons(data))
+    getTypes().then((data) => setTypes(data))
+  }, [])
 
-export default function List ({ children }) {
-  const [page, setPage] = useState(0);
-  const [filters, setFilters] = useState({ search: '', type: 'all' });
-  const [rowsPerPage, setRowsPerPage] = useState(paginationOptions[0]);
+  const [filters, setFilters] = useState({ search: '', type: 'all' })
 
-  const changePage = (newPage) => setPage(newPage);
-  const previousPage = () => changePage(page - 1);
-  const nextPage = () => changePage(page + 1);
-
-  const changeRowsPerPage = (amount) => {
-    setRowsPerPage(parseInt(amount, 10));
-
-    setPage(0);
-  };
-
-  const filterSearch = (term) => setFilters({ ...filters, search: term });
-  const fitlerType = (type) => setFilters({ ...filters, type });
-
-  const filteredRows = useMemo(
+  const filteredPokemons = useMemo(
     () => {
-      const { search, type } = filters;
+      const { search, type } = filters
 
-      return rows.filter((row) => (
+      return pokemons.filter((row) => (
         (!search || row.searchable.some((value) => value.includes(search.toLowerCase())))
-        && (type === 'all' || row.types.list.includes(type))
-      ));
+        && (type === 'all' || row.types.list.includes(type.toLowerCase()))
+      ))
     },
-    [rows, filters],
-  );
+    [pokemons, filters],
+  )
 
-  const visibleRows = useMemo(
-    () => rowsPerPage > 0 ? filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : filteredRows,
-    [filteredRows, page, rowsPerPage],
-  );
+  const { limits, pagination, data } = usePagination(filteredPokemons)
 
-  const visibleAmount = useMemo(
-    () => {
-      const total = rows.length;
+  const previous = () => {
+    pagination.previous()
 
-      if (rowsPerPage < 0) {
-        return {
-          from: 1,
-          to: total,
-        };
-      }
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
+  const next = () => {
+    pagination.next()
 
-      const from = page * rowsPerPage + 1;
-      const to = (page + 1) * rowsPerPage;
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 
-      return {
-        from,
-        to: to > total ? total : to,
-      };
-    },
-    [page, rowsPerPage, rows],
-  );
+  const filter = (criteria) => {
+    setFilters({ ...filters, ...criteria })
+
+    pagination.reset()
+  }
 
   const Header = (
     <div className="list__header">
@@ -81,43 +61,43 @@ export default function List ({ children }) {
           value={filters.search}
           placeholder="Search Pokémon"
           autoFocus
-          onChange={filterSearch}
+          onChange={(search) => filter({ search })}
         />
       </div>
       <div className="list__filter">
         Filter by type
         <Select
           value={filters.type}
-          options={[{ label: 'All', value: 'all' }, 'Type 1']}
-          onChange={fitlerType}
+          options={[{ label: 'All', value: 'all' }, ...types]}
+          onChange={(type) => filter({ type })}
         />
       </div>
     </div>
-  );
+  )
 
   const Footer = (
     <div className="list__footer">
       <div className="list__limit">
         <Select
-          value={rowsPerPage}
-          options={paginationOptions}
-          onChange={changeRowsPerPage}
+          value={limits.amount}
+          options={limits.options}
+          onChange={limits.change}
         />
         <span>
-          {rowsPerPage > 0 ? 'Pokémon per page' : 'Pokémon visible'}
+          {limits.amount > 0 ? 'Pokémon per page' : 'Pokémon visible'}
         </span>
       </div>
       <div className="list__pagination">
-        {visibleAmount.from}-{visibleAmount.to} of {rows.length}
-        <Button onClick={previousPage} disabled={!page}>
+        {data.from}-{data.to} of {filteredPokemons.length}
+        <Button onClick={previous} disabled={!pagination.page}>
           &lt;
         </Button>
-        <Button onClick={nextPage} disabled={visibleAmount.to === rows.length}>
+        <Button onClick={next} disabled={data.to === filteredPokemons.length}>
           &gt;
         </Button>
       </div>
     </div>
-  );
+  )
 
   return (
     <Wrapper
@@ -125,7 +105,7 @@ export default function List ({ children }) {
       footer={Footer}
       className="list"
     >
-      {visibleRows.length ? (<Table rows={visibleRows} />) : (
+      {data.visible.length ? (<Table rows={data.visible} />) : (
         <div className="list__empty">
           No Pokémon matching the search or filters
         </div>
