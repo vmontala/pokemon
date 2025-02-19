@@ -8,6 +8,7 @@ import Input from '@/components/Input.jsx'
 import Select from '@/components/Select.jsx'
 import Wrapper from '@/components/Wrapper.jsx'
 import Table from '@/components/Table.jsx'
+import Loader from '@/components/Loader.jsx'
 
 import usePagination from './usePagination.js'
 import './List.css'
@@ -17,9 +18,14 @@ export default function List () {
   const [types, setTypes] = useState([])
 
   useEffect(() => {
-    getPokemons().then((data) => setPokemons(data))
-    getTypes().then((data) => setTypes(data))
+    getPokemons().then(setPokemons)
+    getTypes().then(setTypes)
   }, [])
+
+  const loading = useMemo(
+    () => !pokemons.length || !types.length,
+    [pokemons, types],
+  )
 
   const [filters, setFilters] = useState({ search: '', type: 'all' })
 
@@ -59,9 +65,9 @@ export default function List () {
       <div className="list__filter">
         <Input
           value={filters.search}
-          placeholder="Search Pokémon"
-          autoFocus
+          placeholder="Search"
           onChange={(search) => filter({ search })}
+          disabled={loading}
         />
       </div>
       <div className="list__filter">
@@ -70,6 +76,7 @@ export default function List () {
           value={filters.type}
           options={[{ label: 'All', value: 'all' }, ...types]}
           onChange={(type) => filter({ type })}
+          disabled={loading}
         />
       </div>
     </div>
@@ -82,6 +89,7 @@ export default function List () {
           value={limits.amount}
           options={limits.options}
           onChange={limits.change}
+          disabled={loading}
         />
         <span>
           {limits.amount > 0 ? 'Pokémon per page' : 'Pokémon visible'}
@@ -89,14 +97,37 @@ export default function List () {
       </div>
       <div className="list__pagination">
         {data.from}-{data.to} of {filteredPokemons.length}
-        <Button onClick={previous} disabled={!pagination.page}>
+        <Button onClick={previous} disabled={loading || !pagination.page}>
           &lt;
         </Button>
-        <Button onClick={next} disabled={data.to === filteredPokemons.length}>
+        <Button onClick={next} disabled={loading || data.to === filteredPokemons.length}>
           &gt;
         </Button>
       </div>
     </div>
+  )
+
+  const Body = useMemo(
+    () => {
+      if (loading) {
+        return (
+          <Loader />
+        )
+      }
+
+      if (!data.visible.length) {
+        return (
+          <div className="list__empty">
+            No Pokémon matching the search or filters
+          </div>
+        )
+      }
+
+      return (
+        <Table rows={data.visible} />
+      )
+    },
+    [loading, data],
   )
 
   return (
@@ -105,11 +136,7 @@ export default function List () {
       footer={Footer}
       className="list"
     >
-      {data.visible.length ? (<Table rows={data.visible} />) : (
-        <div className="list__empty">
-          No Pokémon matching the search or filters
-        </div>
-      )}
+      {Body}
     </Wrapper>
   )
 }

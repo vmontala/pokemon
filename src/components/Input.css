@@ -13,4 +13,10 @@
   &::placeholder {
     color: var(--color-generic-black);
   }
+
+  &[disabled] {
+    background-color: var(--color-generic-gray-dark);
+    border-style: inset;
+    cursor: not-allowed;
+  }
 }

@@ -19,10 +19,20 @@
     outline: none;
   }
 
+  &:has([disabled]) {
+    background-color: var(--color-generic-gray-dark);
+    border-style: inset;
+    color: var(--color-generic-black);
+  }
+
   .select__field {
     position: absolute;
     opacity: 0;
     inset: -5px;
     cursor: pointer;
+
+    &[disabled] {
+      cursor: not-allowed;
+    }
   }
 }
